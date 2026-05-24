@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Мария Кочнева | Fitness & Stretching Instructor",
   description:
     "Персональный fitness и stretching инструктор: индивидуальные тренировки, гибкость, осанка, сила и гармония тела.",
+  verification: {
+    yandex: "06f8fc67396d2ab2"
+  },
   keywords: [
     "персональный тренер",
     "фитнес тренер онлайн",

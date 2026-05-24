@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #eaf6fb;
+  --background: #08111d;
   --surface: #dbeaf2;
-  --text: #6b4c36;
-  --accent: #bfa88a;
+  --text: #f0f7ff;
+  --accent: #9fd4ff;
 }
 
 html,
@@ -14,7 +14,95 @@ body {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
   font-family: var(--font-body), sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -4%;
+  z-index: -3;
+  background-image: linear-gradient(125deg, rgba(7, 14, 24, 0.82), rgba(6, 18, 33, 0.72)),
+    url("/photos/maria-bg-dumbbell.jpeg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px) saturate(115%);
+  transform: scale(1.06);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at 15% 15%, rgba(111, 180, 237, 0.24), transparent 38%),
+    radial-gradient(circle at 80% 10%, rgba(141, 197, 255, 0.18), transparent 42%),
+    linear-gradient(145deg, rgba(7, 13, 22, 0.65), rgba(8, 18, 31, 0.56));
+  pointer-events: none;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 2;
+}
+
+.site-shell section {
+  background: transparent !important;
+}
+
+.site-shell :is(h1, h2, h3, h4) {
+  color: #eff6ff !important;
+}
+
+.site-shell :is(p, li, label, summary, a, span) {
+  color: #c8d8ea;
+}
+
+.site-shell :is(article, details, form, aside, footer, nav) {
+  border-color: rgba(230, 244, 255, 0.26) !important;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.16), rgba(145, 178, 207, 0.07)) !important;
+  box-shadow: 0 28px 60px -44px rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(16px) saturate(130%);
+}
+
+.site-shell input,
+.site-shell textarea,
+.site-shell select {
+  border-color: rgba(233, 244, 255, 0.28) !important;
+  background: rgba(10, 22, 36, 0.58) !important;
+  color: #eef6ff !important;
+}
+
+.site-shell input::placeholder,
+.site-shell textarea::placeholder {
+  color: #9cb3c8;
+}
+
+.site-shell button,
+.site-shell .button,
+.site-shell [role="button"] {
+  border-color: rgba(225, 240, 255, 0.34) !important;
+}
+
+.site-shell .text-\[11px\],
+.site-shell .text-xs {
+  color: #9fc2df !important;
+}
+
+.site-shell .text-4xl,
+.site-shell .text-5xl,
+.site-shell .text-6xl,
+.site-shell .text-3xl,
+.site-shell .text-2xl,
+.site-shell .text-xl {
+  color: #edf6ff !important;
+}
+
+.site-shell footer {
+  border-top-color: rgba(221, 239, 255, 0.2) !important;
 }
 
 h1,
@@ -31,9 +119,87 @@ h4 {
   mix-blend-mode: soft-light;
 }
 
+.site-3d {
+  position: fixed;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.28), rgba(146, 190, 222, 0.09));
+  box-shadow: 0 28px 50px -36px rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(9px) saturate(130%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.site-3d-a {
+  top: 14vh;
+  left: 4vw;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  animation: float-one 8s ease-in-out infinite;
+}
+
+.site-3d-b {
+  top: 34vh;
+  right: 5vw;
+  width: 108px;
+  height: 16px;
+  border-radius: 999px;
+  transform: rotate(-14deg);
+  animation: float-two 10s ease-in-out infinite;
+}
+
+.site-3d-c {
+  bottom: 15vh;
+  left: 9vw;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  transform: rotate(16deg);
+  animation: float-three 9s ease-in-out infinite;
+}
+
+@keyframes float-one {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes float-two {
+  0%,
+  100% {
+    transform: rotate(-14deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-14deg) translateY(-8px);
+  }
+}
+
+@keyframes float-three {
+  0%,
+  100% {
+    transform: rotate(16deg) translateY(0);
+  }
+  50% {
+    transform: rotate(16deg) translateY(-8px);
+  }
+}
+
+@media (max-width: 900px) {
+  .site-3d-a,
+  .site-3d-b,
+  .site-3d-c {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
+}
+
 ::selection {
-  background: #dccff5;
-  color: #2d2450;
+  background: #cfe4f3;
+  color: #19364d;
 }
 
 /* Hide Next.js devtools launcher (floating N button) in dev mode. */

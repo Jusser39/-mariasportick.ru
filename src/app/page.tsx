@@ -14,7 +14,10 @@ import { Testimonials } from "@/components/sections/Testimonials";
 
 export default function HomePage() {
   return (
-    <main className="relative overflow-x-clip">
+    <main className="site-shell relative overflow-x-clip">
+      <div className="site-3d site-3d-a" aria-hidden="true" />
+      <div className="site-3d site-3d-b" aria-hidden="true" />
+      <div className="site-3d site-3d-c" aria-hidden="true" />
       <Navbar />
       <Hero />
       <About />

@@ -1,0 +1,272 @@
+:root {
+  --bg-a: #05080f;
+  --bg-b: #0c1624;
+  --bg-c: #15283b;
+  --text-main: #edf5ff;
+  --text-soft: #bfd0e2;
+  --accent-1: #91bbff;
+  --accent-2: #7de7db;
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-strong: rgba(255, 255, 255, 0.18);
+  --line: rgba(255, 255, 255, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  font-family: "Montserrat", sans-serif;
+  color: var(--text-main);
+  background: linear-gradient(130deg, var(--bg-a), var(--bg-b) 42%, var(--bg-c));
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -4%;
+  z-index: -3;
+  pointer-events: none;
+  background-image: linear-gradient(145deg, rgba(4, 10, 18, 0.72), rgba(10, 24, 39, 0.68)), url("/photos/maria-bg-dumbbell.jpeg");
+  background-position: center;
+  background-size: cover;
+  filter: blur(6px) saturate(120%);
+  transform: scale(1.07);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(65rem 40rem at 10% 10%, #173b5f66, transparent 70%),
+    radial-gradient(50rem 35rem at 90% 12%, #1f335566, transparent 72%),
+    radial-gradient(45rem 45rem at 65% 90%, #264f6470, transparent 65%),
+    radial-gradient(rgba(255, 255, 255, 0.1) 0.65px, transparent 0.65px);
+  background-size: auto, auto, auto, 3px 3px;
+  opacity: 0.3;
+}
+
+.hero-section {
+  width: min(1240px, 92vw);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  grid-template-columns: 1.05fr 0.95fr;
+  padding: 4rem 0;
+}
+
+.info-block {
+  max-width: 700px;
+  padding: 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.accent-text {
+  display: inline-block;
+  margin-top: 0.4rem;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.philosophy-text {
+  margin: 1.8rem 0 0;
+  max-width: 55ch;
+  line-height: 1.72;
+  font-size: clamp(0.96rem, 1.5vw, 1.08rem);
+  color: var(--text-soft);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  padding: 1.2rem 1.25rem;
+  backdrop-filter: blur(16px) saturate(130%);
+}
+
+.cta-button {
+  margin-top: 1.65rem;
+  display: inline-flex;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 0.95rem 1.65rem;
+  border-radius: 999px;
+  color: #e9f5ff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(115deg, rgba(114, 178, 255, 0.5), rgba(92, 121, 206, 0.35));
+  backdrop-filter: blur(12px) saturate(125%);
+  box-shadow: 0 18px 45px -24px rgba(106, 172, 255, 0.8);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 50px -20px rgba(116, 188, 255, 0.9);
+  background: linear-gradient(115deg, rgba(128, 193, 255, 0.62), rgba(96, 132, 219, 0.44));
+}
+
+.visual-block {
+  position: relative;
+  min-height: 580px;
+  border-radius: 2.2rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(155deg, var(--glass-strong), var(--glass));
+  backdrop-filter: blur(20px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.33),
+    0 28px 65px -35px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.visual-block::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 5.5rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.bg-letters {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 900;
+  font-size: clamp(7rem, 18vw, 11.5rem);
+  letter-spacing: 0.13em;
+  color: rgba(206, 232, 255, 0.14);
+  user-select: none;
+}
+
+.trainer-photo {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: clamp(280px, 82%, 410px);
+  transform: translateX(-50%);
+  object-fit: contain;
+  filter: drop-shadow(0 18px 26px rgba(117, 185, 255, 0.26)) drop-shadow(0 50px 80px rgba(16, 27, 43, 0.5));
+}
+
+.prop {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.38), rgba(142, 173, 208, 0.2));
+  backdrop-filter: blur(12px);
+  box-shadow: 0 14px 24px -16px rgba(0, 0, 0, 0.7);
+}
+
+.dumbbell {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.db-1 {
+  top: 7.2rem;
+  left: 1.25rem;
+  transform: rotate(12deg);
+}
+
+.db-2 {
+  top: 10.5rem;
+  right: 1.5rem;
+  transform: rotate(-14deg);
+}
+
+.mat {
+  height: 0.95rem;
+  border-radius: 999px;
+}
+
+.mat-1 {
+  width: 6rem;
+  left: -0.4rem;
+  bottom: 9.5rem;
+  transform: rotate(-12deg);
+}
+
+.mat-2 {
+  width: 6.4rem;
+  right: 0.7rem;
+  bottom: 7.4rem;
+  transform: rotate(8deg);
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding-top: 2.6rem;
+    gap: 1.6rem;
+  }
+
+  .info-block {
+    max-width: 100%;
+  }
+
+  .visual-block {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    width: min(1240px, 94vw);
+  }
+
+  .philosophy-text {
+    border-radius: 1.1rem;
+    padding: 1rem;
+    line-height: 1.62;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .visual-block {
+    min-height: 470px;
+    border-radius: 1.6rem;
+  }
+
+  .db-2 {
+    top: 7.9rem;
+  }
+
+  .mat-1 {
+    bottom: 7rem;
+  }
+
+  .mat-2 {
+    bottom: 5.8rem;
+  }
+}

@@ -35,12 +35,16 @@ export function LeadForm() {
     setFeedback(null);
 
     try {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 12000);
+
       const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json"
         },
+        signal: controller.signal,
         body: JSON.stringify({
           name: form.name.trim(),
           goal: form.goal.trim() || "-",
@@ -51,6 +55,8 @@ export function LeadForm() {
           _captcha: "false"
         })
       });
+
+      window.clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error("send_failed");
@@ -64,7 +70,7 @@ export function LeadForm() {
     } catch {
       setFeedback({
         tone: "error",
-        message: "Не удалось отправить заявку. Проверьте интернет и попробуйте еще раз."
+        message: "Не удалось отправить заявку сейчас. Проверьте интернет и попробуйте еще раз через минуту."
       });
     } finally {
       setIsSubmitting(false);
