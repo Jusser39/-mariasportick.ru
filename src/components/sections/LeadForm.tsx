@@ -19,25 +19,38 @@ const initialState: FormState = {
 
 export function LeadForm() {
   const [form, setForm] = useState<FormState>(initialState);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   const telegramLink = useMemo(() => "https://t.me/MariaSportick", []);
   const targetEmail = useMemo(() => "rabochaya_veb_pochta@mail.ru", []);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const message = [
-      "Новая заявка с сайта",
-      `Имя: ${form.name.trim() || "-"}`,
-      `Цель: ${form.goal.trim() || "-"}`,
-      `Контакт: ${form.contact.trim() || "-"}`,
-      `Удобное время: ${form.schedule.trim() || "-"}`
-    ].join("\n");
+    setIsSubmitting(true);
+    setFeedback(null);
 
-    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent("Новая заявка с сайта")}&body=${encodeURIComponent(message)}`;
-    window.location.href = mailtoUrl;
-    setIsSubmitted(true);
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(form)
+      });
+
+      if (!response.ok) {
+        throw new Error("send_failed");
+      }
+
+      setForm(initialState);
+      setFeedback(`Заявка отправлена на ${targetEmail}.`);
+    } catch {
+      setFeedback("Не удалось отправить заявку автоматически. Попробуйте Telegram ниже.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -98,9 +111,10 @@ export function LeadForm() {
           <div className="md:col-span-2 flex flex-wrap items-center gap-4">
             <button
               type="submit"
+              disabled={isSubmitting}
               className="inline-flex rounded-full border border-[#c7def2] bg-[#8ec5eb] px-7 py-3 text-xs uppercase tracking-[0.2em] text-[#f8fcff]"
             >
-              Отправить заявку
+              {isSubmitting ? "Отправляем..." : "Отправить заявку"}
             </button>
             <a
               href={telegramLink}
@@ -110,7 +124,7 @@ export function LeadForm() {
             >
               Или написать напрямую в Telegram
             </a>
-            {isSubmitted && <p className="text-sm text-[#3a6b8f]">Открылось письмо на {targetEmail}. Если хотите, я могу заменить адрес на ваш.</p>}
+            {feedback && <p className="text-sm text-[#3a6b8f]">{feedback}</p>}
           </div>
         </form>
       </Reveal>
