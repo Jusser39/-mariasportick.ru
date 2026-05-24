@@ -26,7 +26,6 @@ export function LeadForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<FeedbackState>(null);
-  const targetEmail = "rabochaya_veb_pochta@mail.ru";
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -38,7 +37,7 @@ export function LeadForm() {
       const controller = new AbortController();
       const timeoutId = window.setTimeout(() => controller.abort(), 12000);
 
-      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+      const response = await fetch("/api/lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,23 +48,22 @@ export function LeadForm() {
           name: form.name.trim(),
           goal: form.goal.trim() || "-",
           contact: form.contact.trim(),
-          schedule: form.schedule.trim() || "-",
-          _subject: "Новая заявка с сайта mariasportick.ru",
-          _template: "table",
-          _captcha: "false"
+          schedule: form.schedule.trim() || "-"
         })
       });
 
       window.clearTimeout(timeoutId);
 
-      if (!response.ok) {
+      const result = (await response.json()) as { ok?: boolean; message?: string };
+
+      if (!response.ok || !result.ok) {
         throw new Error("send_failed");
       }
 
       setForm(initialState);
       setFeedback({
         tone: "success",
-        message: "Заявка отправлена. С вами свяжутся в ближайшее время."
+        message: result.message || "Заявка отправлена. С вами свяжутся в ближайшее время."
       });
     } catch {
       setFeedback({
