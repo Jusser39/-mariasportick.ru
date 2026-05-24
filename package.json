@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "verify:target": "powershell -ExecutionPolicy Bypass -File scripts/verify-target.ps1",
+    "verify:target": "node scripts/verify-target.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
