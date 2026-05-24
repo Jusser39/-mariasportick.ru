@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Reveal } from "@/components/animations/Reveal";
 
 type FormState = {
@@ -26,8 +26,7 @@ export function LeadForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<FeedbackState>(null);
-
-  const telegramLink = useMemo(() => "https://t.me/MariaSportick", []);
+  const targetEmail = "rabochaya_veb_pochta@mail.ru";
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,12 +35,21 @@ export function LeadForm() {
     setFeedback(null);
 
     try {
-      const response = await fetch("/api/lead", {
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Accept: "application/json"
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify({
+          name: form.name.trim(),
+          goal: form.goal.trim() || "-",
+          contact: form.contact.trim(),
+          schedule: form.schedule.trim() || "-",
+          _subject: "Новая заявка с сайта mariasportick.ru",
+          _template: "table",
+          _captcha: "false"
+        })
       });
 
       if (!response.ok) {
@@ -56,7 +64,7 @@ export function LeadForm() {
     } catch {
       setFeedback({
         tone: "error",
-        message: "Не удалось отправить заявку автоматически. Попробуйте еще раз или напишите в Telegram."
+        message: "Не удалось отправить заявку. Проверьте интернет и попробуйте еще раз."
       });
     } finally {
       setIsSubmitting(false);
@@ -126,16 +134,6 @@ export function LeadForm() {
             >
               {isSubmitting ? "Отправляем..." : "Отправить заявку"}
             </button>
-            {feedback?.tone === "error" && (
-              <a
-                href={telegramLink}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs uppercase tracking-[0.18em] text-[#5d537d] underline-offset-4 hover:underline"
-              >
-                Написать напрямую в Telegram
-              </a>
-            )}
           </div>
 
           {feedback && (
