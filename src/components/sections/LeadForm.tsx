@@ -10,6 +10,11 @@ type FormState = {
   schedule: string;
 };
 
+type FeedbackState = {
+  tone: "success" | "error";
+  message: string;
+} | null;
+
 const initialState: FormState = {
   name: "",
   goal: "",
@@ -20,10 +25,9 @@ const initialState: FormState = {
 export function LeadForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [feedback, setFeedback] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<FeedbackState>(null);
 
   const telegramLink = useMemo(() => "https://t.me/MariaSportick", []);
-  const targetEmail = useMemo(() => "rabochaya_veb_pochta@mail.ru", []);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,9 +49,15 @@ export function LeadForm() {
       }
 
       setForm(initialState);
-      setFeedback(`Заявка отправлена на ${targetEmail}.`);
+      setFeedback({
+        tone: "success",
+        message: "Заявка отправлена. С вами свяжутся в ближайшее время."
+      });
     } catch {
-      setFeedback("Не удалось отправить заявку автоматически. Попробуйте Telegram ниже.");
+      setFeedback({
+        tone: "error",
+        message: "Не удалось отправить заявку автоматически. Попробуйте еще раз или напишите в Telegram."
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -116,16 +126,30 @@ export function LeadForm() {
             >
               {isSubmitting ? "Отправляем..." : "Отправить заявку"}
             </button>
-            <a
-              href={telegramLink}
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs uppercase tracking-[0.18em] text-[#5d537d] underline-offset-4 hover:underline"
-            >
-              Или написать напрямую в Telegram
-            </a>
-            {feedback && <p className="text-sm text-[#3a6b8f]">{feedback}</p>}
+            {feedback?.tone === "error" && (
+              <a
+                href={telegramLink}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs uppercase tracking-[0.18em] text-[#5d537d] underline-offset-4 hover:underline"
+              >
+                Написать напрямую в Telegram
+              </a>
+            )}
           </div>
+
+          {feedback && (
+            <div
+              aria-live="polite"
+              className={`md:col-span-2 rounded-2xl px-4 py-3 text-sm ${
+                feedback.tone === "success"
+                  ? "border border-[#cde9d8] bg-[#eefaf2] text-[#2c6b45]"
+                  : "border border-[#eed3d9] bg-[#fff3f5] text-[#9b4458]"
+              }`}
+            >
+              {feedback.message}
+            </div>
+          )}
         </form>
       </Reveal>
     </section>
