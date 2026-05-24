@@ -22,6 +22,7 @@ export function LeadForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const telegramLink = useMemo(() => "https://t.me/MariaSportick", []);
+  const targetEmail = useMemo(() => "rabochaya_veb_pochta@mail.ru", []);
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -34,8 +35,8 @@ export function LeadForm() {
       `Удобное время: ${form.schedule.trim() || "-"}`
     ].join("\n");
 
-    const url = `${telegramLink}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent("Новая заявка с сайта")}&body=${encodeURIComponent(message)}`;
+    window.location.href = mailtoUrl;
     setIsSubmitted(true);
   }
 
@@ -109,7 +110,7 @@ export function LeadForm() {
             >
               Или написать напрямую в Telegram
             </a>
-            {isSubmitted && <p className="text-sm text-[#3a6b8f]">Черновик заявки открыт в Telegram.</p>}
+            {isSubmitted && <p className="text-sm text-[#3a6b8f]">Открылось письмо на {targetEmail}. Если хотите, я могу заменить адрес на ваш.</p>}
           </div>
         </form>
       </Reveal>
