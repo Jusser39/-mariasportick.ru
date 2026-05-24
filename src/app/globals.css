@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eaf6fb;
+  --surface: #dbeaf2;
+  --text: #6b4c36;
+  --accent: #bfa88a;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), serif;
+  letter-spacing: -0.015em;
+}
+
+.grain-overlay {
+  background-image: radial-gradient(rgba(42, 36, 64, 0.09) 0.6px, transparent 0.6px);
+  background-size: 3px 3px;
+  mix-blend-mode: soft-light;
+}
+
+::selection {
+  background: #dccff5;
+  color: #2d2450;
+}
+
+/* Hide Next.js devtools launcher (floating N button) in dev mode. */
+nextjs-portal [data-nextjs-dev-tools-button],
+nextjs-portal #devtools-indicator {
+  display: none !important;
+}
