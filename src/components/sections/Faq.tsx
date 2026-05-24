@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { Reveal } from "@/components/animations/Reveal";
 
 const faqItems = [
@@ -36,9 +35,7 @@ const faqJsonLd = {
 export function Faq() {
   return (
     <section id="faq" className="bg-[#f5f0fb]/70 py-24 md:py-32">
-      <Script id="faq-jsonld" type="application/ld+json" strategy="afterInteractive">
-        {JSON.stringify(faqJsonLd)}
-      </Script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <div className="mx-auto w-[min(1120px,92%)]">
         <Reveal>

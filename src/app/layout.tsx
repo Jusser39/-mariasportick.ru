@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
+const siteUrl = "https://mariasportick.ru";
+
 const heading = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-heading",
@@ -15,29 +17,64 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Мария Кочнева | Fitness & Stretching Instructor",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Мария Кочнева | Персональный фитнес-тренер онлайн",
+    template: "%s | Мария Кочнева"
+  },
   description:
-    "Персональный fitness и stretching инструктор: индивидуальные тренировки, гибкость, осанка, сила и гармония тела.",
+    "Персональный фитнес-тренер онлайн: силовые тренировки, stretching, мобильность и питание. Индивидуальная программа и сопровождение.",
+  alternates: {
+    canonical: "/"
+  },
   verification: {
     yandex: "06f8fc67396d2ab2"
   },
   keywords: [
     "персональный тренер",
-    "фитнес тренер онлайн",
+    "персональный фитнес тренер онлайн",
+    "онлайн тренировки для женщин",
+    "тренер по растяжке онлайн",
     "stretching",
     "гибкость",
-    "онлайн тренировки",
+    "питание и тренировки",
     "персональные тренировки"
   ],
   robots: {
     index: true,
-    follow: true
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
   },
   openGraph: {
-    title: "Мария Кочнева | Fitness & Stretching Instructor",
+    title: "Мария Кочнева | Персональный фитнес-тренер онлайн",
     description:
-      "Сильное тело, гибкость и баланс. Персональные тренировки и stretching с мягким профессиональным подходом.",
-    type: "website"
+      "Сильное тело, гибкость и баланс. Персональные онлайн-тренировки, stretching и сопровождение по питанию.",
+    type: "website",
+    url: siteUrl,
+    siteName: "mariasportick.ru",
+    locale: "ru_RU",
+    images: [
+      {
+        url: "/photos/maria-new-1.jpg",
+        width: 1200,
+        height: 1600,
+        alt: "Персональный тренер Мария Кочнева"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Мария Кочнева | Персональный фитнес-тренер онлайн",
+    description:
+      "Индивидуальные тренировки, растяжка, мобильность и поддержка по питанию для стабильного результата.",
+    images: ["/photos/maria-new-1.jpg"]
   }
 };
 

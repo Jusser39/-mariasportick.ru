@@ -1,0 +1,18 @@
+# mariasportick.ru - llms.txt
+
+## Summary
+mariasportick.ru - персональный фитнес и stretching тренер Мария Кочнева. Сайт про онлайн-тренировки, мобильность, питание и устойчивые привычки для женщин.
+
+## Key Pages
+- https://mariasportick.ru/ : Главная страница, экспертный профиль, услуги, результаты, отзывы и форма заявки.
+- https://mariasportick.ru/online-trenirovki : Персональные онлайн-тренировки, формат, стоимость и кому подходит.
+- https://mariasportick.ru/stretching-online : Онлайн stretching и мобильность, цели, противопоказания и формат занятий.
+- https://mariasportick.ru/pitanie-fitnes : Поддержка по питанию, правила без экстремальных диет и частые ошибки.
+- https://mariasportick.ru/wellness-program : Комплексная wellness-программа: тренировки, восстановление, сон и питание.
+- https://mariasportick.ru/faq-fitnes : Частые вопросы по старту, стоимости, графику и сопровождению.
+
+## Contact
+- Website: https://mariasportick.ru
+- Telegram: https://t.me/MariaSportick
+- Instagram: https://instagram.com/kmaria.31
+- Email: rabochaya_veb_pochta@mail.ru

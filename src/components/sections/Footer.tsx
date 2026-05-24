@@ -1,5 +1,13 @@
 import { navItems } from "@/lib/content";
 
+const seoPages = [
+  { label: "Онлайн-тренировки", href: "/online-trenirovki" },
+  { label: "Stretching онлайн", href: "/stretching-online" },
+  { label: "Питание и фитнес", href: "/pitanie-fitnes" },
+  { label: "Wellness программа", href: "/wellness-program" },
+  { label: "FAQ по тренировкам", href: "/faq-fitnes" }
+] as const;
+
 export function Footer() {
   return (
     <footer className="border-t border-[#e6def7] bg-[#f6f2ff] py-12">
@@ -30,9 +38,20 @@ export function Footer() {
           <a href="https://t.me/MariaSportick" className="text-sm text-[#5d537d] transition hover:text-[#7f72b2]">
             Telegram
           </a>
-          <a href="mailto:coach@lenavale.com" className="text-sm text-[#5d537d] transition hover:text-[#7f72b2]">
+          <a href="mailto:rabochaya_veb_pochta@mail.ru" className="text-sm text-[#5d537d] transition hover:text-[#7f72b2]">
             Email
           </a>
+        </div>
+
+        <div className="md:col-span-3 border-t border-[#e2d8f4] pt-6">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-[#7a6a9f]">Популярные страницы</p>
+          <div className="mt-3 flex flex-wrap gap-4">
+            {seoPages.map((item) => (
+              <a key={item.href} href={item.href} className="text-sm text-[#5d537d] transition hover:text-[#7f72b2]">
+                {item.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
