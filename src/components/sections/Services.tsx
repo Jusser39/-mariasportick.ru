@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/animations/Reveal";
 import { services } from "@/lib/content";
@@ -30,12 +29,6 @@ export function Services() {
                   <p className="mt-3 inline-flex rounded-full bg-[#d8ecfa] px-3 py-1 text-sm text-[#3a6b8f]">2000 ₽ / тренировка</p>
                 )}
                 <p className="mt-4 leading-relaxed text-[#5f5782]">{service.description}</p>
-                <Link
-                  href={service.href}
-                  className="mt-5 inline-flex items-center text-sm font-medium text-[#456c8f] transition-colors hover:text-[#2a4a66]"
-                >
-                  Подробнее по программе
-                </Link>
                 <div className="mt-6 h-[2px] w-12 bg-[#8aa7df] transition-all duration-500 group-hover:w-20" />
               </motion.article>
             </Reveal>
