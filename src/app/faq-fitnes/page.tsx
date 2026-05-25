@@ -55,7 +55,7 @@ export default function FaqFitnessPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <h1 className="text-4xl font-semibold md:text-5xl">FAQ по онлайн-тренировкам и stretching</h1>
       <p className="mt-4 text-base leading-relaxed text-[#5f5782]">
-        Здесь собраны ответы для запросов "онлайн тренер Калининград" и "персональные тренировки Россия" — по стоимости,
+        Здесь собраны ответы для запросов «онлайн тренер Калининград» и «персональные тренировки Россия» — по стоимости,
         формату занятий и ожидаемой динамике результатов.
       </p>
       <div className="mt-10 grid gap-5">
