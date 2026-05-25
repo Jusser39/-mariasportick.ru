@@ -727,9 +727,10 @@ body {
     left: auto;
     top: auto;
     width: min(62vw, 276px);
-    transform: none;
+    transform: translateY(0.38rem);
     margin: 0 auto;
     isolation: isolate;
+    will-change: transform;
   }
 
   .hologram::before {
@@ -833,7 +834,7 @@ body {
     right: auto;
     width: 100%;
     max-width: 100%;
-    margin: -0.25rem auto 0;
+    margin: -0.34rem auto 0;
     border: none;
     padding: 0;
     background: transparent;
