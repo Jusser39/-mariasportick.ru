@@ -2,6 +2,7 @@
   const track = document.getElementById("track");
   const spacer = document.getElementById("scroll-spacer");
   const slides = [...document.querySelectorAll(".slide")];
+  const diplomaLink = document.querySelector(".about-diploma-cta");
   const desktopQuery = window.matchMedia("(min-width: 901px)");
 
   let maxScroll = 0;
@@ -17,6 +18,22 @@
 
   function isDesktop() {
     return desktopQuery.matches;
+  }
+
+  function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function patchDiplomaLinkForMobile() {
+    if (!diplomaLink) {
+      return;
+    }
+
+    if (isMobileDevice()) {
+      diplomaLink.setAttribute("href", "/landing/diplom-mobile.html");
+    } else {
+      diplomaLink.setAttribute("href", "/landing/diplom.pdf#zoom=25");
+    }
   }
 
   function updateDimensions() {
@@ -136,6 +153,7 @@
     goToSlideById(id);
   }
 
+  patchDiplomaLinkForMobile();
   updateDimensions();
   ensureAnimation();
 
