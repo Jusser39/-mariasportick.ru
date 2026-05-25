@@ -762,6 +762,11 @@ body {
     color: rgba(226, 243, 255, 0.48);
   }
 
+  /* Keep #баланс fully visible on narrow mobile widths. */
+  .service-hashtags .t8 {
+    left: 78%;
+  }
+
 
   .hero-services {
     position: static;
