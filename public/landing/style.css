@@ -574,6 +574,13 @@ body {
 
 
 @media (max-width: 900px) {
+  .aurora {
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #030508;
+  }
+
   .slide-hero {
     display: flex;
     flex-direction: column;
@@ -666,7 +673,7 @@ body {
     gap: 1rem;
     padding: 1rem 0.75rem 1.1rem;
     border-radius: 1.4rem;
-    overflow: hidden;
+    overflow: visible;
     border: 0.5px solid var(--glass-border);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.2),
@@ -683,14 +690,45 @@ body {
   }
 
   .hologram-stars {
-    width: min(94vw, 560px);
-    height: min(58vh, 460px);
-    top: 44%;
+    display: block;
+    left: 50%;
+    top: 6.2rem;
+    width: min(92vw, 420px);
+    height: 360px;
+    transform: translateX(-50%);
   }
 
-  .hologram-stars,
   .service-hashtags {
-    display: none;
+    display: block;
+  }
+
+  .orbit-star {
+    font-size: clamp(18px, 6vw, 28px);
+    color: rgba(219, 241, 255, 0.44);
+    text-shadow:
+      0 0 8px rgba(211, 236, 255, 0.3),
+      0 0 16px rgba(195, 223, 245, 0.18);
+  }
+
+  .service-hashtags {
+    left: 50%;
+    right: auto;
+    top: 1.8rem;
+    bottom: auto;
+    width: min(92vw, 420px);
+    height: 380px;
+    transform: translateX(-50%);
+  }
+
+  .service-hashtags .tag {
+    font-size: clamp(0.82rem, 3.8vw, 1.02rem);
+    color: rgba(224, 241, 255, 0.58);
+    text-shadow: 0 0 10px rgba(173, 210, 238, 0.2);
+  }
+
+  .service-hashtags .tag.top {
+    font-size: clamp(0.72rem, 3.2vw, 0.92rem);
+    color: rgba(226, 243, 255, 0.48);
   }
 
 
