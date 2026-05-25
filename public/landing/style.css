@@ -535,10 +535,10 @@ body {
 }
 
 .about-diploma-cta {
-  min-width: 117px;
-  height: 36px;
-  padding: 0 0.9rem;
-  font-size: 0.78rem;
+  min-width: 234px;
+  height: 72px;
+  padding: 0 1.8rem;
+  font-size: 1.56rem;
   letter-spacing: 0.01em;
 }
 
@@ -877,10 +877,10 @@ body {
   }
 
   .about-diploma-cta {
-    min-width: 92px;
-    height: 28px;
-    padding: 0 0.65rem;
-    font-size: 0.62rem;
+    min-width: 184px;
+    height: 56px;
+    padding: 0 1.3rem;
+    font-size: 1.24rem;
   }
 
   .services-row {
