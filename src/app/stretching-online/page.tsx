@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Stretching онлайн и мобильность",
+  title: "Stretching онлайн и мобильность в Калининграде и по России",
   description:
-    "Stretching онлайн с тренером: безопасная растяжка, мобильность суставов, улучшение осанки и снижение скованности.",
+    "Stretching онлайн с тренером для клиентов из Калининграда и всей России: безопасная растяжка, мобильность суставов, улучшение осанки и снижение скованности.",
   alternates: {
     canonical: "/stretching-online"
   }
@@ -32,6 +32,10 @@ export default function StretchingOnlinePage() {
       <p className="mt-6 text-lg leading-relaxed text-[#4f466f]">
         Растяжка и мобильность помогают улучшить амплитуду движений, снять зажимы и сделать тело более свободным в быту и в
         тренировках. Программа строится мягко: без боли и без перегруза.
+      </p>
+      <p className="mt-4 text-base leading-relaxed text-[#5f5782]">
+        По запросам "stretching Калининград" и "онлайн растяжка Россия" вы получаете персональную программу с понятной
+        прогрессией, чтобы улучшать гибкость без травмоопасных нагрузок.
       </p>
 
       <section className="mt-10 grid gap-6 rounded-3xl border border-[#e6dcf7] bg-[#fcfaff] p-6 md:grid-cols-2">

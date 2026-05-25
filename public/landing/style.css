@@ -876,3 +876,29 @@ body {
     display: none;
   }
 }
+
+@media (max-width: 430px) {
+  .service-hashtags {
+    top: 2.55rem;
+    width: 96vw;
+    max-width: 420px;
+    height: 360px;
+  }
+
+  .service-hashtags .tag {
+    font-size: clamp(0.66rem, 3.1vw, 0.82rem);
+    text-shadow: 0 0 8px rgba(173, 210, 238, 0.16);
+  }
+
+  .service-hashtags .tag.top {
+    font-size: clamp(0.6rem, 2.7vw, 0.74rem);
+  }
+
+  .service-hashtags .t6 { top: 76%; }
+  .service-hashtags .t7 { top: 62%; }
+  .service-hashtags .t8 { top: 26%; }
+  .service-hashtags .t9 { top: 13%; }
+  .service-hashtags .t16 { top: 35%; }
+  .service-hashtags .t17 { top: 47%; }
+  .service-hashtags .t18 { top: 60%; }
+}

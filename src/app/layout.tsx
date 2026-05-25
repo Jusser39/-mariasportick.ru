@@ -3,6 +3,8 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
 const siteUrl = "https://mariasportick.ru";
+const city = "Калининград";
+const country = "Россия";
 
 const heading = Cormorant_Garamond({
   subsets: ["latin"],
@@ -80,10 +82,51 @@ export const metadata: Metadata = {
   }
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Мария Кочнева",
+  jobTitle: "Персональный фитнес-тренер",
+  url: siteUrl,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: city,
+    addressCountry: "RU"
+  },
+  knowsAbout: [
+    "Персональные тренировки",
+    "Stretching",
+    "Мобильность",
+    "Фитнес-питание"
+  ],
+  areaServed: [city, country]
+};
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  name: "Мария Кочнева — фитнес-тренер",
+  url: siteUrl,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: city,
+    addressCountry: "RU"
+  },
+  areaServed: [city, country],
+  sameAs: ["https://t.me/MariaSportick"]
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ru" className="scroll-smooth">
-      <body className={`${heading.variable} ${body.variable} antialiased`}>{children}</body>
+      <body className={`${heading.variable} ${body.variable} antialiased`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQ по онлайн-тренировкам и stretching",
+  title: "FAQ по онлайн-тренировкам и stretching в Калининграде и по России",
   description:
-    "Ответы на частые вопросы: стоимость, формат занятий, график, питание и результаты персональных онлайн-тренировок.",
+    "Ответы на частые вопросы по персональным онлайн-тренировкам для клиентов из Калининграда и всей России: стоимость, формат занятий, график, питание и результаты.",
   alternates: {
     canonical: "/faq-fitnes"
   }
@@ -54,6 +54,10 @@ export default function FaqFitnessPage() {
     <main className="mx-auto w-[min(960px,92%)] py-28 text-[#2a2440]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <h1 className="text-4xl font-semibold md:text-5xl">FAQ по онлайн-тренировкам и stretching</h1>
+      <p className="mt-4 text-base leading-relaxed text-[#5f5782]">
+        Здесь собраны ответы для запросов "онлайн тренер Калининград" и "персональные тренировки Россия" — по стоимости,
+        формату занятий и ожидаемой динамике результатов.
+      </p>
       <div className="mt-10 grid gap-5">
         <article className="rounded-2xl border border-[#e6dcf7] bg-white/70 p-5">
           <h2 className="text-2xl">Сколько стоит персональная тренировка?</h2>

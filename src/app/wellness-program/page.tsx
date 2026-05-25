@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Wellness-программа: тренировки и восстановление",
+  title: "Wellness-программа в Калининграде и по России: тренировки и восстановление",
   description:
-    "Комплексная wellness-программа: персональные тренировки, stretching, восстановление и питание для устойчивого результата.",
+    "Комплексная wellness-программа для клиентов из Калининграда и всей России: персональные тренировки, stretching, восстановление и питание для устойчивого результата.",
   alternates: {
     canonical: "/wellness-program"
   }
@@ -32,6 +32,10 @@ export default function WellnessProgramPage() {
       <p className="mt-6 text-lg leading-relaxed text-[#4f466f]">
         Это формат сопровождения, где объединяются тренировки, мобильность, восстановление и питание. Подходит тем, кто хочет
         не разовый рывок, а системные изменения в самочувствии и внешней форме.
+      </p>
+      <p className="mt-4 text-base leading-relaxed text-[#5f5782]">
+        Если вы ищете "wellness программа Калининград" или "фитнес сопровождение Россия", здесь вы получаете единый план:
+        тренировки, восстановление и питание в одной стратегии.
       </p>
 
       <section className="mt-10 rounded-3xl border border-[#e6dcf7] bg-[#fcfaff] p-6">
