@@ -574,6 +574,12 @@ body {
 
 
 @media (max-width: 900px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   .aurora {
     background-size: contain;
     background-position: center top;
@@ -586,12 +592,14 @@ body {
     flex-direction: column;
     gap: 1rem;
     padding: 0.9rem;
+    overflow-x: clip;
   }
 
   .viewport {
     position: relative;
     inset: auto;
     overflow: visible;
+    max-width: 100vw;
   }
 
   .track {
@@ -599,6 +607,7 @@ body {
     height: auto;
     display: block;
     transform: none !important;
+    max-width: 100vw;
   }
 
   .slide {
@@ -619,7 +628,7 @@ body {
     justify-content: flex-start;
     border: 0.5px solid var(--glass-border);
     padding: 0.9rem 1rem;
-    gap: 0.65rem;
+    gap: 0.45rem;
     border-radius: 1.15rem;
     background: linear-gradient(155deg, rgba(255, 255, 255, 0.16), rgba(9, 10, 14, 0.42));
     box-shadow:
@@ -635,7 +644,7 @@ body {
     white-space: normal;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.06rem;
     width: 100%;
     align-items: center;
     text-align: center;
@@ -650,11 +659,15 @@ body {
     display: block;
   }
 
+  .hero-info .hero-name {
+    font-size: 0.9em;
+  }
+
   .hero-info .hero-title {
-    margin-top: 0.16rem;
+    margin-top: 0.04rem;
     width: auto;
-    padding: 0.1rem 0.44rem 0.16rem;
-    font-size: 1.02em;
+    padding: 0.08rem 0.38rem 0.14rem;
+    font-size: 0.94em;
     max-width: 100%;
     white-space: normal;
     text-align: center;
@@ -667,9 +680,11 @@ body {
     transform: none;
     margin-right: 0;
     align-self: center;
-    padding: 0.38rem 0.7rem;
-    font-size: 0.42rem;
+    margin-top: 0.08rem;
+    padding: 0.28rem 0.56rem;
+    font-size: 0.35rem;
     line-height: 1.1;
+    white-space: nowrap;
   }
 
   .hero-visual {
@@ -681,6 +696,7 @@ body {
     padding: 1rem 0.75rem 1.1rem;
     border-radius: 1.4rem;
     overflow: visible;
+    max-width: 100%;
     border: 0.5px solid var(--glass-border);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.2),
@@ -700,9 +716,10 @@ body {
     display: block;
     left: 50%;
     top: 6.2rem;
-    width: min(92vw, 420px);
+    width: min(88vw, 390px);
     height: 360px;
     transform: translateX(-50%);
+    overflow: hidden;
   }
 
   .service-hashtags {
@@ -720,21 +737,22 @@ body {
   .service-hashtags {
     left: 43%;
     right: auto;
-    top: 1.8rem;
+    top: 2.35rem;
     bottom: auto;
-    width: min(92vw, 420px);
+    width: min(86vw, 380px);
     height: 380px;
     transform: translateX(-50%);
+    overflow: hidden;
   }
 
   .service-hashtags .tag {
-    font-size: clamp(0.82rem, 3.8vw, 1.02rem);
+    font-size: clamp(0.76rem, 3.35vw, 0.94rem);
     color: rgba(224, 241, 255, 0.58);
     text-shadow: 0 0 10px rgba(173, 210, 238, 0.2);
   }
 
   .service-hashtags .tag.top {
-    font-size: clamp(0.72rem, 3.2vw, 0.92rem);
+    font-size: clamp(0.67rem, 2.9vw, 0.84rem);
     color: rgba(226, 243, 255, 0.48);
   }
 
@@ -745,7 +763,7 @@ body {
     width: 100%;
     margin-top: 0;
     border: 0.5px solid var(--glass-border);
-    padding: 0.8rem;
+    padding: 0.65rem;
     background: linear-gradient(155deg, rgba(255, 255, 255, 0.19), var(--glass-bg));
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.26),
@@ -761,11 +779,13 @@ body {
 
   .service-mini-card {
     min-height: 108px;
-    padding: 0.9rem 0.7rem;
+    padding: 0.78rem 0.62rem;
   }
 
   .service-mini-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.12;
+    max-width: 94%;
   }
 
   .services-row {
