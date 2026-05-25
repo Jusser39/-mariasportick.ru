@@ -572,6 +572,18 @@ body {
   }
 }
 
+@keyframes mobile-holo-glint {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translateX(-2%) translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.62;
+    transform: translateX(2%) translateY(-1%) scale(1.03);
+  }
+}
+
 
 @media (max-width: 900px) {
   html,
@@ -713,9 +725,37 @@ body {
     position: relative;
     left: auto;
     top: auto;
-    width: min(58vw, 250px);
+    width: min(62vw, 276px);
     transform: none;
     margin: 0 auto;
+    isolation: isolate;
+  }
+
+  .hologram::before {
+    content: "";
+    position: absolute;
+    inset: 6% 8%;
+    border-radius: 2rem;
+    background:
+      linear-gradient(130deg, rgba(214, 236, 255, 0.28) 0%, transparent 38%, rgba(179, 216, 244, 0.22) 62%, transparent 100%);
+    mix-blend-mode: screen;
+    filter: blur(0.6px);
+    opacity: 0.46;
+    z-index: 2;
+    animation: mobile-holo-glint 5.8s ease-in-out infinite;
+  }
+
+  .hologram::after {
+    inset: -12% -10%;
+    background: radial-gradient(circle, rgba(221, 236, 248, 0.24), rgba(131, 163, 188, 0.14) 44%, rgba(22, 30, 44, 0.06) 70%, transparent 84%);
+    filter: blur(1px);
+  }
+
+  .hologram-img {
+    filter: saturate(118%) contrast(1.08) brightness(1.06)
+      drop-shadow(0 10px 20px rgba(5, 12, 20, 0.56))
+      drop-shadow(0 0 18px rgba(198, 228, 248, 0.26));
+    animation-duration: 9.2s;
   }
 
   .hologram-stars {
