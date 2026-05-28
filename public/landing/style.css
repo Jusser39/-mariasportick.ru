@@ -191,6 +191,21 @@ body {
     linear-gradient(145deg, rgba(11, 14, 20, 0.78), rgba(14, 19, 27, 0.6));
 }
 
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 14% 18% 10%;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(125, 231, 219, 0.28), transparent 40%),
+    radial-gradient(circle at 50% 58%, rgba(255, 164, 197, 0.18), transparent 52%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.18), transparent 62%);
+  filter: blur(28px);
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .hero-visual::after {
   content: "";
   position: absolute;
@@ -207,7 +222,7 @@ body {
   position: absolute;
   left: 50%;
   top: 47%;
-  width: min(30vw, 420px);
+  width: min(32vw, 460px);
   transform: translate(-50%, -50%);
   z-index: 4;
   pointer-events: none;
@@ -225,9 +240,10 @@ body {
   mask-image: radial-gradient(128% 108% at 50% 50%, #000 66%, rgba(0, 0, 0, 0.88) 78%, rgba(0, 0, 0, 0.45) 90%, transparent 100%);
   transform-origin: 50% 56%;
   image-rendering: auto;
-  filter: saturate(114%) contrast(1.05) brightness(1.04)
-    drop-shadow(0 8px 16px rgba(5, 12, 20, 0.5))
-    drop-shadow(0 0 14px rgba(205, 232, 255, 0.2));
+  filter: saturate(138%) contrast(1.14) brightness(1.08)
+    drop-shadow(0 10px 20px rgba(5, 12, 20, 0.52))
+    drop-shadow(0 0 18px rgba(205, 232, 255, 0.26))
+    drop-shadow(0 0 34px rgba(125, 231, 219, 0.12));
   animation: holo-3d-sway 8.2s ease-in-out infinite;
 }
 
@@ -238,9 +254,11 @@ body {
 .hologram::after {
   content: "";
   position: absolute;
-  inset: -8% -6%;
+  inset: -10% -8%;
   border-radius: 2.4rem;
-  background: radial-gradient(circle, rgba(226, 235, 244, 0.18), rgba(130, 154, 172, 0.1) 46%, rgba(20, 26, 36, 0.04) 68%, transparent 82%);
+  background:
+    radial-gradient(circle, rgba(226, 235, 244, 0.18), rgba(130, 154, 172, 0.1) 42%, rgba(20, 26, 36, 0.04) 66%, transparent 80%),
+    radial-gradient(circle at 50% 56%, rgba(125, 231, 219, 0.1), transparent 48%);
   z-index: -1;
 }
 
@@ -414,7 +432,31 @@ body {
 
 .philosophy-card {
   max-width: 760px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding-bottom: clamp(7.5rem, 14vw, 10.5rem);
   z-index: 1;
+}
+
+.philosophy-content {
+  position: relative;
+  z-index: 2;
+  max-width: 88%;
+}
+
+.about-us-cutout {
+  position: absolute;
+  right: -1rem;
+  bottom: -7.4rem;
+  width: clamp(220px, 34vw, 340px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  filter: saturate(118%) contrast(1.07) brightness(1.05)
+    drop-shadow(0 14px 28px rgba(5, 12, 20, 0.5))
+    drop-shadow(0 0 16px rgba(197, 232, 252, 0.2));
+  opacity: 0.94;
 }
 
 .philosophy-card h2 {
@@ -734,7 +776,7 @@ body {
     position: relative;
     left: auto;
     top: auto;
-    width: min(62vw, 276px);
+    width: min(68vw, 304px);
     transform: translateY(0.38rem);
     margin: 0 auto;
     isolation: isolate;
@@ -762,9 +804,10 @@ body {
   }
 
   .hologram-img {
-    filter: saturate(118%) contrast(1.08) brightness(1.06)
-      drop-shadow(0 10px 20px rgba(5, 12, 20, 0.56))
-      drop-shadow(0 0 18px rgba(198, 228, 248, 0.26));
+    filter: saturate(128%) contrast(1.1) brightness(1.08)
+      drop-shadow(0 12px 22px rgba(5, 12, 20, 0.58))
+      drop-shadow(0 0 18px rgba(198, 228, 248, 0.24))
+      drop-shadow(0 0 22px rgba(125, 231, 219, 0.12));
     animation-duration: 9.2s;
   }
 
@@ -776,6 +819,25 @@ body {
     height: 360px;
     transform: translateX(-50%);
     overflow: hidden;
+  }
+
+  .philosophy-card {
+    padding-bottom: 9rem;
+  }
+
+  .philosophy-content {
+    max-width: 100%;
+  }
+
+  .about-us-cutout {
+    right: 50%;
+    bottom: -8.5rem;
+    width: min(74vw, 290px);
+    transform: translateX(50%);
+    opacity: 0.9;
+    filter: saturate(114%) contrast(1.05) brightness(1.04)
+      drop-shadow(0 12px 24px rgba(5, 12, 20, 0.46))
+      drop-shadow(0 0 14px rgba(197, 232, 252, 0.18));
   }
 
   .service-hashtags {
