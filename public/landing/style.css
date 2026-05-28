@@ -433,7 +433,7 @@ body {
 }
 
 .philosophy-card {
-  max-width: 1040px;
+  max-width: 960px;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -451,7 +451,7 @@ body {
 .philosophy-content {
   position: relative;
   z-index: 2;
-  max-width: 74%;
+  max-width: 70%;
 }
 
 .philosophy-content > p:last-of-type {
@@ -460,9 +460,9 @@ body {
 
 .about-us-cutout {
   position: absolute;
-  right: -4.4rem;
+  right: -2.2rem;
   bottom: -6.8rem;
-  width: clamp(350px, 47vw, 530px);
+  width: clamp(320px, 42vw, 470px);
   height: auto;
   z-index: 1;
   pointer-events: none;
