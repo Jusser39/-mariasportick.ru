@@ -438,13 +438,10 @@ body {
   overflow: hidden;
   isolation: isolate;
   border-radius: 0.95rem;
-  border: 1px solid rgba(171, 219, 255, 0.62);
-  box-shadow:
-    inset 0 0 0 1px rgba(218, 240, 255, 0.2),
-    0 0 0 1px rgba(138, 201, 248, 0.3),
-    0 18px 38px -30px rgba(5, 12, 20, 0.82);
-  padding-top: clamp(1rem, 2vw, 1.45rem);
-  padding-bottom: clamp(7rem, 14vw, 9.5rem);
+  border: none;
+  box-shadow: 0 14px 28px -30px rgba(5, 12, 20, 0.7);
+  padding-top: 0.65rem;
+  padding-bottom: 1.65rem;
   z-index: 1;
 }
 
@@ -461,7 +458,7 @@ body {
 .about-us-cutout {
   position: absolute;
   right: -2.2rem;
-  bottom: -6.8rem;
+  bottom: -4.8rem;
   width: clamp(320px, 42vw, 470px);
   height: auto;
   z-index: 1;
@@ -477,7 +474,7 @@ body {
 .about-us-below-photo {
   display: block;
   max-width: 100%;
-  margin-top: clamp(7.2rem, 13vw, 9rem);
+  margin-top: 1.5rem;
 }
 
 .philosophy-card h2 {
