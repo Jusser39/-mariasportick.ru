@@ -438,8 +438,10 @@ body {
   overflow: hidden;
   isolation: isolate;
   border-radius: 0.95rem;
-  border: none;
-  box-shadow: 0 14px 28px -30px rgba(5, 12, 20, 0.7);
+  border: 0.5px solid rgba(141, 210, 255, 0.54);
+  box-shadow:
+    inset 0 0 0 1px rgba(159, 229, 255, 0.16),
+    0 14px 28px -30px rgba(5, 12, 20, 0.72);
   padding-top: 0.65rem;
   padding-bottom: 1.65rem;
   z-index: 1;
