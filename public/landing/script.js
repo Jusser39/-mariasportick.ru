@@ -198,7 +198,7 @@
       .join("\n");
 
     trackEvent("lead_form_submit", { goal, level });
-    const url = `https://t.me/MariaSportick?text=${encodeURIComponent(message)}`;
+    const url = `https://t.me/Maria_fit_Kochneva?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
     leadForm.reset();
   }
