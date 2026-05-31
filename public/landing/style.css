@@ -573,7 +573,8 @@ body {
 }
 
 .detail-card--wide {
-  max-width: 980px;
+  max-width: 1060px;
+  padding: clamp(1.25rem, 2.6vw, 2.3rem);
 }
 
 .detail-card h2 {
@@ -614,7 +615,7 @@ body {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .result-card,
@@ -691,7 +692,6 @@ body {
 }
 
 .lead-field input,
-.lead-field select,
 .lead-field textarea {
   width: 100%;
   border-radius: 0.78rem;
@@ -708,23 +708,95 @@ body {
 }
 
 .lead-field select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding-right: 2.1rem;
-  background-image:
-    linear-gradient(45deg, transparent 50%, rgba(229, 241, 255, 0.88) 50%),
-    linear-gradient(135deg, rgba(229, 241, 255, 0.88) 50%, transparent 50%);
-  background-position:
-    calc(100% - 16px) calc(50% - 2px),
-    calc(100% - 11px) calc(50% - 2px);
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
+  display: none;
 }
 
-.lead-field select option {
+.custom-select {
+  position: relative;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 0.78rem;
+  border: 0.5px solid rgba(163, 214, 247, 0.62);
+  padding: 0.62rem 2.2rem 0.62rem 0.75rem;
+  font: inherit;
+  text-align: left;
   color: #eef6ff;
-  background: rgba(10, 16, 25, 0.92);
+  cursor: pointer;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.08), rgba(11, 17, 25, 0.58)),
+    linear-gradient(45deg, transparent 50%, rgba(229, 241, 255, 0.88) 50%),
+    linear-gradient(135deg, rgba(229, 241, 255, 0.88) 50%, transparent 50%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position:
+    0 0,
+    calc(100% - 16px) calc(50% - 2px),
+    calc(100% - 11px) calc(50% - 2px);
+  background-size: auto, 5px 5px, 5px 5px;
+  box-shadow:
+    inset 0 0 0 1px rgba(159, 229, 255, 0.08),
+    0 8px 18px -16px rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.custom-select.open .custom-select-trigger {
+  border-color: rgba(173, 222, 252, 0.82);
+  box-shadow:
+    inset 0 0 0 1px rgba(173, 222, 252, 0.25),
+    0 0 0 2px rgba(90, 170, 225, 0.18);
+}
+
+.custom-select-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 0.32rem);
+  z-index: 20;
+  display: none;
+  border-radius: 0.78rem;
+  border: 0.5px solid rgba(163, 214, 247, 0.62);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.1), rgba(11, 17, 25, 0.68));
+  box-shadow:
+    inset 0 0 0 1px rgba(159, 229, 255, 0.1),
+    0 16px 28px -16px rgba(0, 0, 0, 0.84);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.custom-select.open .custom-select-menu {
+  display: block;
+}
+
+.custom-select-option {
+  width: 100%;
+  border: 0;
+  border-top: 0.5px solid rgba(133, 188, 226, 0.26);
+  background: transparent;
+  color: rgba(236, 246, 255, 0.96);
+  font: inherit;
+  text-align: left;
+  padding: 0.58rem 0.75rem;
+  cursor: pointer;
+}
+
+.custom-select-option:first-child {
+  border-top: 0;
+}
+
+.custom-select-option:hover,
+.custom-select-option:focus-visible {
+  outline: none;
+  background: rgba(130, 199, 245, 0.2);
+}
+
+.lead-form-status {
+  margin: 0;
+  font-size: 0.86rem;
+  color: rgba(205, 232, 252, 0.95);
 }
 
 .lead-field input::placeholder,
@@ -733,7 +805,6 @@ body {
 }
 
 .lead-field input:focus,
-.lead-field select:focus,
 .lead-field textarea:focus {
   outline: none;
   border-color: rgba(173, 222, 252, 0.8);

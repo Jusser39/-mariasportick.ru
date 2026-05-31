@@ -4,6 +4,8 @@
   const slides = [...document.querySelectorAll(".slide")];
   const diplomaLink = document.querySelector(".about-diploma-cta");
   const leadForm = document.getElementById("lead-form");
+  const leadFormStatus = document.getElementById("lead-form-status");
+  const customSelects = [...document.querySelectorAll(".custom-select")];
   const desktopQuery = window.matchMedia("(min-width: 901px)");
 
   let maxScroll = 0;
@@ -178,32 +180,111 @@
     event.preventDefault();
     const formData = new FormData(leadForm);
     const name = (formData.get("name") || "").toString().trim();
+    const contact = (formData.get("contact") || "").toString().trim();
     const goal = (formData.get("goal") || "").toString().trim();
     const level = (formData.get("level") || "").toString().trim();
     const note = (formData.get("note") || "").toString().trim();
 
-    if (!name || !goal || !level) {
+    if (leadFormStatus) {
+      leadFormStatus.textContent = "";
+    }
+
+    if (!name || !contact || !goal || !level) {
       trackEvent("lead_form_invalid", { reason: "required_fields" });
+      if (leadFormStatus) {
+        leadFormStatus.textContent = "Заполните имя, контакт, цель и уровень.";
+      }
       return;
     }
 
-    const message = [
-      "Здравствуйте! Хочу начать тренировки.",
-      `Имя: ${name}`,
-      `Цель: ${goal}`,
-      `Уровень: ${level}`,
-      note ? `Комментарий: ${note}` : ""
-    ]
-      .filter(Boolean)
-      .join("\n");
+    trackEvent("lead_form_submit", { goal, level, channel: "api" });
 
-    trackEvent("lead_form_submit", { goal, level });
-    const url = `https://t.me/Maria_fit_Kochneva?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-    leadForm.reset();
+    fetch("/api/lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        contact,
+        goal: `${goal} | ${level}`,
+        schedule: note || "-"
+      })
+    })
+      .then(async (response) => {
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || payload?.ok === false) {
+          throw new Error(payload?.message || "Ошибка отправки");
+        }
+
+        if (leadFormStatus) {
+          leadFormStatus.textContent = "Анкета отправлена. Я напишу вам в личные сообщения @Maria_fit_Kochneva.";
+        }
+        leadForm.reset();
+        customSelects.forEach((select) => {
+          const trigger = select.querySelector(".custom-select-trigger");
+          const hidden = select.querySelector("input[type='hidden']");
+          if (trigger && hidden) {
+            trigger.textContent = hidden.name === "goal" ? "Выберите цель" : "Выберите уровень";
+          }
+        });
+      })
+      .catch((error) => {
+        if (leadFormStatus) {
+          leadFormStatus.textContent = error.message || "Не удалось отправить анкету. Попробуйте еще раз.";
+        }
+      });
+  }
+
+  function closeCustomSelects(except) {
+    customSelects.forEach((select) => {
+      if (select !== except) {
+        select.classList.remove("open");
+      }
+    });
+  }
+
+  function setupCustomSelects() {
+    customSelects.forEach((select) => {
+      const trigger = select.querySelector(".custom-select-trigger");
+      const hidden = select.querySelector("input[type='hidden']");
+      const options = [...select.querySelectorAll(".custom-select-option")];
+
+      if (!trigger || !hidden || options.length === 0) {
+        return;
+      }
+
+      trigger.addEventListener("click", () => {
+        const isOpen = select.classList.contains("open");
+        closeCustomSelects(select);
+        if (!isOpen) {
+          select.classList.add("open");
+        }
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          const value = option.getAttribute("data-value") || "";
+          hidden.value = value;
+          trigger.textContent = value;
+          select.classList.remove("open");
+        });
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      if (!target.closest(".custom-select")) {
+        closeCustomSelects(null);
+      }
+    });
   }
 
   patchDiplomaLinkForMobile();
+  setupCustomSelects();
   updateDimensions();
   ensureAnimation();
 

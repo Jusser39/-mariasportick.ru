@@ -59,7 +59,7 @@
             <span class="hero-name">Мария Кочнева</span>
             <span class="hero-title">Движение. Сила. Гибкость</span>
           </h1>
-          <a href="https://t.me/MariaSportick" class="cta" data-track="hero_cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
+          <a href="https://t.me/Maria_fit_Kochneva" class="cta" data-track="hero_cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
         </div>
 
         <div class="hero-visual">
@@ -235,27 +235,37 @@
             <label class="lead-field">Имя
               <input type="text" name="name" placeholder="Как к вам обращаться" required>
             </label>
+            <label class="lead-field">Telegram или телефон
+              <input type="text" name="contact" placeholder="@username или +7..." required>
+            </label>
             <label class="lead-field">Цель
-              <select name="goal" required>
-                <option value="">Выберите цель</option>
-                <option>Снижение веса</option>
-                <option>Набор формы</option>
-                <option>Гибкость и мобильность</option>
-                <option>Укрепление спины</option>
-              </select>
+              <div class="custom-select" data-name="goal">
+                <button type="button" class="custom-select-trigger">Выберите цель</button>
+                <div class="custom-select-menu" role="listbox" aria-label="Цель">
+                  <button type="button" class="custom-select-option" data-value="Снижение веса">Снижение веса</button>
+                  <button type="button" class="custom-select-option" data-value="Набор формы">Набор формы</button>
+                  <button type="button" class="custom-select-option" data-value="Гибкость и мобильность">Гибкость и мобильность</button>
+                  <button type="button" class="custom-select-option" data-value="Укрепление спины">Укрепление спины</button>
+                </div>
+                <input type="hidden" name="goal" required>
+              </div>
             </label>
             <label class="lead-field">Уровень
-              <select name="level" required>
-                <option value="">Выберите уровень</option>
-                <option>Новичок</option>
-                <option>Средний</option>
-                <option>Опытный</option>
-              </select>
+              <div class="custom-select" data-name="level">
+                <button type="button" class="custom-select-trigger">Выберите уровень</button>
+                <div class="custom-select-menu" role="listbox" aria-label="Уровень">
+                  <button type="button" class="custom-select-option" data-value="Новичок">Новичок</button>
+                  <button type="button" class="custom-select-option" data-value="Средний">Средний</button>
+                  <button type="button" class="custom-select-option" data-value="Опытный">Опытный</button>
+                </div>
+                <input type="hidden" name="level" required>
+              </div>
             </label>
             <label class="lead-field lead-field--wide">Комментарий
               <textarea name="note" rows="3" placeholder="Есть ли ограничения или пожелания"></textarea>
             </label>
-            <button type="submit" class="detail-cta" data-track="lead_form_submit">Отправить в Telegram</button>
+            <button type="submit" class="detail-cta" data-track="lead_form_submit">Отправить анкету</button>
+            <p class="lead-form-status" id="lead-form-status" role="status" aria-live="polite"></p>
           </form>
         </article>
       </section>
@@ -265,7 +275,7 @@
           <h2>Следующий шаг</h2>
           <p>Напишите в Telegram, чтобы получить персональный план тренировок под вашу задачу: снижение веса, укрепление тела, гибкость или набор формы.</p>
           <p>В сообщении коротко укажите цель, текущий уровень и удобный график. Я подберу формат и отвечу, с чего лучше начать именно вам.</p>
-          <a href="https://t.me/MariaSportick" class="detail-cta" data-track="final_cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
+          <a href="https://t.me/Maria_fit_Kochneva" class="detail-cta" data-track="final_cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
           <footer class="landing-footer">
             <a href="/landing/privacy.html">Политика конфиденциальности</a>
             <a href="/landing/offer.html">Публичная оферта</a>
@@ -276,7 +286,7 @@
     </div>
   </main>
 
-  <a href="https://t.me/MariaSportick" class="mobile-sticky-cta" data-track="sticky_mobile_cta" target="_blank" rel="noopener noreferrer">Записаться в Telegram</a>
+  <a href="https://t.me/Maria_fit_Kochneva" class="mobile-sticky-cta" data-track="sticky_mobile_cta" target="_blank" rel="noopener noreferrer">Записаться в Telegram</a>
 
   <div class="scroll-spacer" id="scroll-spacer" aria-hidden="true"></div>
 
