@@ -8,6 +8,45 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Мария Кочнева",
+      "jobTitle": "Персональный фитнес-тренер",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Калининград",
+        "addressCountry": "RU"
+      },
+      "knowsAbout": ["персональные тренировки", "растяжка", "мобильность", "онлайн-фитнес"],
+      "url": "https://mariasportick.ru/landing/index.html"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Подойдут ли тренировки новичкам?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. Программа собирается под ваш текущий уровень и самочувствие."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько нужно тренировок в неделю?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Обычно 2-3 занятия в неделю для стабильного прогресса."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
   <div class="aurora"></div>
@@ -20,12 +59,12 @@
             <span class="hero-name">Мария Кочнева</span>
             <span class="hero-title">Движение. Сила. Гибкость</span>
           </h1>
-          <a href="https://t.me/MariaSportick" class="cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
+          <a href="https://t.me/MariaSportick" class="cta" data-track="hero_cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
         </div>
 
         <div class="hero-visual">
           <div class="hologram" aria-hidden="true">
-            <img src="sticker.webp" alt="Персональный фитнес-тренер Мария Кочнева, Калининград, Россия" class="hologram-img">
+            <img src="sticker.webp" srcset="sticker-mobile.webp 938w, sticker.webp 1706w" sizes="(max-width: 900px) 68vw, (max-width: 1400px) 36vw, 460px" alt="Персональный фитнес-тренер Мария Кочнева, Калининград, Россия" class="hologram-img">
           </div>
 
           <div class="hologram-stars" aria-hidden="true">
@@ -127,16 +166,117 @@
         </article>
       </section>
 
+      <section class="slide slide-service-detail" id="results" aria-label="Результаты клиентов">
+        <article class="glass panel detail-card">
+          <h2>Результаты клиентов</h2>
+          <div class="results-grid">
+            <article class="result-card glass">
+              <h3>Минус 7 кг за 12 недель</h3>
+              <p>Фокус: дефицит калорий, 3 тренировки в неделю, контроль шагов.</p>
+            </article>
+            <article class="result-card glass">
+              <h3>Спина без боли за 8 недель</h3>
+              <p>Фокус: мобильность грудного отдела, стабилизация корпуса, техника.</p>
+            </article>
+            <article class="result-card glass">
+              <h3>Гибкость и осанка за 10 недель</h3>
+              <p>Фокус: регулярная растяжка и силовая база без перегрузок.</p>
+            </article>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide slide-service-detail" id="reviews" aria-label="Отзывы">
+        <article class="glass panel detail-card">
+          <h2>Отзывы</h2>
+          <div class="review-grid">
+            <blockquote class="review-card glass">"Тело стало сильнее, ушли боли в пояснице, появилась энергия."</blockquote>
+            <blockquote class="review-card glass">"Четкий план, комфортный темп и постоянная поддержка."</blockquote>
+            <blockquote class="review-card glass">"За 3 месяца минус 2 размера одежды и уверенность в себе."</blockquote>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide slide-service-detail" id="packages" aria-label="Пакеты">
+        <article class="glass panel detail-card">
+          <h2>Пакеты сопровождения</h2>
+          <div class="package-grid">
+            <article class="package-card glass">
+              <p class="package-badge">Старт</p>
+              <h3>4 тренировки</h3>
+              <p>Диагностика, базовая техника, план на 2 недели.</p>
+            </article>
+            <article class="package-card glass package-card--focus">
+              <p class="package-badge">Популярный</p>
+              <h3>8 тренировок</h3>
+              <p>Персональная программа, контроль прогресса и питание.</p>
+            </article>
+            <article class="package-card glass">
+              <p class="package-badge">Pro</p>
+              <h3>12 тренировок</h3>
+              <p>Полное сопровождение, гибкая коррекция и отчет по результатам.</p>
+            </article>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide slide-service-detail" id="safety" aria-label="Безопасный старт">
+        <article class="glass panel detail-card">
+          <h2>Безопасный старт</h2>
+          <p>Первые 7 дней строятся мягко: тестируем технику, подбираем нагрузку и исключаем упражнения, которые дают дискомфорт.</p>
+          <p>Вы получаете понятный план с прогрессией и всегда знаете, что делать на каждой тренировке.</p>
+        </article>
+      </section>
+
+      <section class="slide slide-service-detail" id="start-form" aria-label="Анкета перед стартом">
+        <article class="glass panel detail-card">
+          <h2>Мини-анкета перед стартом</h2>
+          <form id="lead-form" class="lead-form" novalidate>
+            <label class="lead-field">Имя
+              <input type="text" name="name" placeholder="Как к вам обращаться" required>
+            </label>
+            <label class="lead-field">Цель
+              <select name="goal" required>
+                <option value="">Выберите цель</option>
+                <option>Снижение веса</option>
+                <option>Набор формы</option>
+                <option>Гибкость и мобильность</option>
+                <option>Укрепление спины</option>
+              </select>
+            </label>
+            <label class="lead-field">Уровень
+              <select name="level" required>
+                <option value="">Выберите уровень</option>
+                <option>Новичок</option>
+                <option>Средний</option>
+                <option>Опытный</option>
+              </select>
+            </label>
+            <label class="lead-field lead-field--wide">Комментарий
+              <textarea name="note" rows="3" placeholder="Есть ли ограничения или пожелания"></textarea>
+            </label>
+            <button type="submit" class="detail-cta" data-track="lead_form_submit">Отправить в Telegram</button>
+          </form>
+        </article>
+      </section>
+
       <section class="slide slide-service-detail" id="next-step" aria-label="Следующий шаг">
         <article class="glass panel detail-card">
           <h2>Следующий шаг</h2>
           <p>Напишите в Telegram, чтобы получить персональный план тренировок под вашу задачу: снижение веса, укрепление тела, гибкость или набор формы.</p>
           <p>В сообщении коротко укажите цель, текущий уровень и удобный график. Я подберу формат и отвечу, с чего лучше начать именно вам.</p>
-          <a href="https://t.me/MariaSportick" class="detail-cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
+          <a href="https://t.me/MariaSportick" class="detail-cta" data-track="final_cta" target="_blank" rel="noopener noreferrer">Записаться на тренировку</a>
+          <footer class="landing-footer">
+            <a href="/landing/privacy.html">Политика конфиденциальности</a>
+            <a href="/landing/offer.html">Публичная оферта</a>
+            <a href="/landing/consent.html">Согласие на обработку данных</a>
+          </footer>
         </article>
       </section>
     </div>
   </main>
+
+  <a href="https://t.me/MariaSportick" class="mobile-sticky-cta" data-track="sticky_mobile_cta" target="_blank" rel="noopener noreferrer">Записаться в Telegram</a>
 
   <div class="scroll-spacer" id="scroll-spacer" aria-hidden="true"></div>
 

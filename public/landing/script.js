@@ -3,6 +3,7 @@
   const spacer = document.getElementById("scroll-spacer");
   const slides = [...document.querySelectorAll(".slide")];
   const diplomaLink = document.querySelector(".about-diploma-cta");
+  const leadForm = document.getElementById("lead-form");
   const desktopQuery = window.matchMedia("(min-width: 901px)");
 
   let maxScroll = 0;
@@ -153,6 +154,55 @@
     goToSlideById(id);
   }
 
+  function trackEvent(eventName, payload = {}) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: eventName, ...payload });
+  }
+
+  function onTrackedClick(event) {
+    const link = event.target.closest("[data-track]");
+    if (!link) {
+      return;
+    }
+
+    trackEvent("landing_click", {
+      target: link.getAttribute("data-track") || "unknown"
+    });
+  }
+
+  function onLeadFormSubmit(event) {
+    if (!leadForm) {
+      return;
+    }
+
+    event.preventDefault();
+    const formData = new FormData(leadForm);
+    const name = (formData.get("name") || "").toString().trim();
+    const goal = (formData.get("goal") || "").toString().trim();
+    const level = (formData.get("level") || "").toString().trim();
+    const note = (formData.get("note") || "").toString().trim();
+
+    if (!name || !goal || !level) {
+      trackEvent("lead_form_invalid", { reason: "required_fields" });
+      return;
+    }
+
+    const message = [
+      "Здравствуйте! Хочу начать тренировки.",
+      `Имя: ${name}`,
+      `Цель: ${goal}`,
+      `Уровень: ${level}`,
+      note ? `Комментарий: ${note}` : ""
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    trackEvent("lead_form_submit", { goal, level });
+    const url = `https://t.me/MariaSportick?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    leadForm.reset();
+  }
+
   patchDiplomaLinkForMobile();
   updateDimensions();
   ensureAnimation();
@@ -163,5 +213,10 @@
   window.addEventListener("touchend", onTouchEnd, { passive: true });
   window.addEventListener("resize", onResize);
   document.addEventListener("click", onAnchorClick);
+  document.addEventListener("click", onTrackedClick);
   window.addEventListener("hashchange", onHashChange);
+
+  if (leadForm) {
+    leadForm.addEventListener("submit", onLeadFormSubmit);
+  }
 })();
